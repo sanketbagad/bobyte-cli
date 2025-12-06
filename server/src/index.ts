@@ -1,6 +1,8 @@
 import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import { toNodeHandler } from "better-auth/node";
+import { auth } from './lib/auth';
 
 // Load environment variables
 dotenv.config();
@@ -9,9 +11,16 @@ const app: Application = express();
 const PORT = process.env.PORT || 3001;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+}));
+app.all('/api/auth/{*any}', toNodeHandler(auth));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+
 
 // Health check route
 app.get('/health', (req: Request, res: Response) => {
