@@ -9,7 +9,7 @@
       "use": "@vercel/next"
     },
     {
-      "src": "server/src/index.ts",
+      "src": "server/package.json",
       "use": "@vercel/node"
     }
   ],
@@ -17,10 +17,6 @@
     {
       "src": "/api/(.*)",
       "dest": "server/src/index.ts"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "client"
     }
   ]
 }
