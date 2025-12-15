@@ -10,5 +10,9 @@ module.exports = {
     '!src/**/*.d.ts'
   ],
   coverageDirectory: 'coverage',
-  verbose: true
+  verbose: true,
+  moduleNameMapper: {
+    '^chalk$': '<rootDir>/tests/__mocks__/chalk.ts',
+    '^boxen$': '<rootDir>/tests/__mocks__/boxen.ts'
+  }
 };
