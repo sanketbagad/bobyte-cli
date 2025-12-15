@@ -6,7 +6,10 @@
   "builds": [
     {
       "src": "client/package.json",
-      "use": "@vercel/next"
+      "use": "@vercel/next",
+      "config": {
+        "zeroConfig": true
+      }
     },
     {
       "src": "server/package.json",
@@ -16,11 +19,7 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "server"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "client"
+      "dest": "server/src/index.ts"
     }
   ]
 }
