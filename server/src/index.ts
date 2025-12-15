@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { toNodeHandler } from "better-auth/node";
 import { auth } from './lib/auth';
+import chatRoutes from './routes/chat.routes';
 
 // Load environment variables
 dotenv.config();
@@ -13,12 +14,18 @@ const PORT = process.env.PORT || 3001;
 // Middleware
 app.use(cors({
     origin: ["http://localhost:3000", "http://localhost:3001"],
-    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
 }));
-app.all('/api/auth/{*splat}', toNodeHandler(auth));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Auth routes - must come before other routes
+app.use('/api/auth', toNodeHandler(auth));
+
+// Routes
+app.use('/api/chat', chatRoutes);
 
 
 

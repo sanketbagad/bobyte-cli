@@ -1,6 +1,6 @@
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { streamText, generateObject, CoreMessage } from "ai";
-import { config } from "../../config/google.config.js";
+import { config } from "../../config/google.config";
 import chalk from "chalk";
 import { z } from "zod";
 

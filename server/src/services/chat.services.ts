@@ -1,4 +1,4 @@
-import prisma from "../lib/db.js";
+import prisma from "../lib/db";
 import type { Conversation, Message } from "@prisma/client";
 
 // Type definitions

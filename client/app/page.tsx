@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { authClient } from "@/lib/auth-client"
 import { useRouter } from "next/navigation"
-import { Terminal, LogOut, Mail, User, CheckCircle2, Loader2, Sparkles, Command } from "lucide-react"
+import { Terminal, LogOut, Mail, User, CheckCircle2, Loader2, Sparkles, Command, MessageSquare } from "lucide-react"
 import Image from "next/image"
 
 export default function Home() {
@@ -117,27 +117,40 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Sign Out Button */}
-              <Button
-                onClick={() =>
-                  authClient.signOut({
-                    fetchOptions: {
-                      onError: (ctx) => console.log(ctx),
-                      onSuccess: () => router.push("/sign-in"),
-                    },
-                  })
-                }
-                variant="outline"
-                className="relative w-full h-14 bg-gradient-to-r from-zinc-800 to-zinc-900 border-0 overflow-hidden group hover:shadow-lg hover:shadow-red-500/20 transition-all duration-500"
-              >
-                <span className="absolute inset-0 rounded-md bg-gradient-to-r from-red-500 via-rose-500 to-pink-500 opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
-                <span className="absolute inset-[1px] rounded-md bg-gradient-to-r from-zinc-900 to-zinc-800" />
-                <span className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-1000" />
-                <span className="relative flex items-center justify-center">
-                  <LogOut className="w-5 h-5 mr-3 text-white group-hover:rotate-[-360deg] transition-transform duration-700" />
-                  <span className="font-semibold text-white">Sign Out</span>
-                </span>
-              </Button>
+              {/* Action Buttons */}
+              <div className="space-y-3">
+                <Button
+                  onClick={() => router.push("/chat")}
+                  className="relative w-full h-14 bg-gradient-to-r from-indigo-600 to-purple-600 border-0 overflow-hidden group hover:shadow-lg hover:shadow-indigo-500/50 transition-all duration-500"
+                >
+                  <span className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-1000" />
+                  <span className="relative flex items-center justify-center">
+                    <MessageSquare className="w-5 h-5 mr-3 text-white group-hover:scale-110 transition-transform duration-300" />
+                    <span className="font-semibold text-white">Open Chat Dashboard</span>
+                  </span>
+                </Button>
+
+                <Button
+                  onClick={() =>
+                    authClient.signOut({
+                      fetchOptions: {
+                        onError: (ctx) => console.log(ctx),
+                        onSuccess: () => router.push("/sign-in"),
+                      },
+                    })
+                  }
+                  variant="outline"
+                  className="relative w-full h-14 bg-gradient-to-r from-zinc-800 to-zinc-900 border-0 overflow-hidden group hover:shadow-lg hover:shadow-red-500/20 transition-all duration-500"
+                >
+                  <span className="absolute inset-0 rounded-md bg-gradient-to-r from-red-500 via-rose-500 to-pink-500 opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
+                  <span className="absolute inset-[1px] rounded-md bg-gradient-to-r from-zinc-900 to-zinc-800" />
+                  <span className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-1000" />
+                  <span className="relative flex items-center justify-center">
+                    <LogOut className="w-5 h-5 mr-3 text-white group-hover:rotate-[-360deg] transition-transform duration-700" />
+                    <span className="font-semibold text-white">Sign Out</span>
+                  </span>
+                </Button>
+              </div>
             </div>
           </CardContent>
         </Card>

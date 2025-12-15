@@ -2,11 +2,11 @@ import chalk from "chalk";
 import boxen from "boxen";
 import { text, isCancel, cancel, intro, outro, confirm } from "@clack/prompts";
 import yoctoSpinner from "yocto-spinner";
-import { AIService } from "../ai/google.service.js";
-import { ChatService } from "../../services/chat.services.js";
-import { getStoredToken } from "../commands/auth/login.js";
-import prisma from "../../lib/db.js";
-import { generateApplication } from "../../config/ai-agent.js";
+import { AIService } from "../ai/google.service";
+import { ChatService } from "../../services/chat.services";
+import { getStoredToken } from "../commands/auth/login";
+import prisma from "../../lib/db";
+import { generateApplication } from "../../config/ai-agent";
 import type { Conversation, Message, User } from "@prisma/client";
 
 // Type definitions
