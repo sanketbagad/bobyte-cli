@@ -34,7 +34,7 @@ export default function ChatPage() {
 
     try {
       setIsCreatingConversation(true)
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/chat/conversations`, {
+      const response = await fetch(`/api/chat/conversations`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

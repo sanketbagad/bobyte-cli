@@ -34,10 +34,6 @@ docs
 .git
 .gitignore
 
-# Client app (we only need server)
-client
-public
-
 # Tests
 tests
 jest.config.js

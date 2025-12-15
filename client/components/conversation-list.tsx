@@ -41,7 +41,7 @@ export function ConversationList({
   const loadConversations = async () => {
     try {
       setIsLoading(true)
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/chat/conversations/${userId}`)
+      const response = await fetch(`/api/chat/conversations/${userId}`)
       const data = await response.json()
       if (data.success) {
         setConversations(data.data)
@@ -57,7 +57,7 @@ export function ConversationList({
     try {
       setIsDeleting(conversationId)
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/chat/conversations/${conversationId}`,
+        `/api/chat/conversations/${conversationId}`,
         {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },

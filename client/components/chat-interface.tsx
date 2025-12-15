@@ -55,7 +55,7 @@ export function ChatInterface({ conversationId, initialMessages = [], onNewMessa
     setIsLoading(true)
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/chat/stream`, {
+      const response = await fetch(`/api/chat/stream`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
