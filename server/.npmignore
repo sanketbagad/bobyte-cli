@@ -1,0 +1,19 @@
+# Ignore unnecessary files for npm package
+node_modules/
+*.log
+.env*
+!.env.example
+tests/
+*.test.ts
+*.test.js
+coverage/
+.vscode/
+.git/
+.gitignore
+tsconfig.eslint.json
+jest.config.js
+nodemon.json
+
+# Keep only built files
+src/
+!dist/
