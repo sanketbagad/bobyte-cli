@@ -49,8 +49,9 @@ app.get('/', (req: Request, res: Response) => {
   res.json({ message: 'Welcome to Orbital CLI AI API' });
 });
 
-// Export app for testing
+// Export app for testing and Vercel
 export { app };
+export default app;
 
 // Start server only if not in test environment
 if (process.env.NODE_ENV !== 'test') {
