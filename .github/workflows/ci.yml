@@ -27,6 +27,8 @@ jobs:
       - name: Generate Prisma Client
         run: npx prisma generate
         working-directory: ./server
+        env:
+          DATABASE_URL: postgresql://placeholder:placeholder@localhost:5432/placeholder
 
       - name: Lint client
         run: npm run lint:client
