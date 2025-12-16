@@ -16,11 +16,29 @@ export async function GET(
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
+        Cookie: request.headers.get('cookie') || '',
       },
+      credentials: 'include',
     });
 
-    const data = await response.json();
-    return NextResponse.json(data, { status: response.status });
+    const contentType = response.headers.get('content-type');
+    let data;
+    
+    if (contentType?.includes('application/json')) {
+      data = await response.json();
+    } else {
+      data = await response.text();
+    }
+    
+    const result = NextResponse.json(data, { status: response.status });
+    
+    // Forward cookies from backend
+    const setCookie = response.headers.get('set-cookie');
+    if (setCookie) {
+      result.headers.set('set-cookie', setCookie);
+    }
+    
+    return result;
   } catch (error) {
     console.error('Auth API route error:', error);
     return NextResponse.json(
@@ -46,12 +64,30 @@ export async function POST(
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        Cookie: request.headers.get('cookie') || '',
       },
       body: JSON.stringify(body),
+      credentials: 'include',
     });
 
-    const data = await response.json();
-    return NextResponse.json(data, { status: response.status });
+    const contentType = response.headers.get('content-type');
+    let data;
+    
+    if (contentType?.includes('application/json')) {
+      data = await response.json();
+    } else {
+      data = await response.text();
+    }
+    
+    const result = NextResponse.json(data, { status: response.status });
+    
+    // Forward cookies from backend
+    const setCookie = response.headers.get('set-cookie');
+    if (setCookie) {
+      result.headers.set('set-cookie', setCookie);
+    }
+    
+    return result;
   } catch (error) {
     console.error('Auth API route error:', error);
     return NextResponse.json(
