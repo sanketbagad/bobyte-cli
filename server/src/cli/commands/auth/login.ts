@@ -15,7 +15,7 @@ import open from "open";
 import os from "os";
 import path from "path";
 import dotenv from "dotenv";
-import prisma from "../../../lib/db";
+import prisma from "../../../lib/db.js";
 
 dotenv.config();
 

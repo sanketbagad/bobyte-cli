@@ -4,10 +4,10 @@ import { text, isCancel, intro, outro } from "@clack/prompts";
 import yoctoSpinner from "yocto-spinner";
 import { marked } from "marked";
 import { markedTerminal } from "marked-terminal";
-import { AIService } from "../ai/google.service";
-import { ChatService } from "../../services/chat.services";
-import { getStoredToken } from "../commands/auth/login";
-import prisma from "../../lib/db";
+import { AIService } from "../ai/google.service.js";
+import { ChatService } from "../../services/chat.services.js";
+import { getStoredToken } from "../commands/auth/login.js";
+import prisma from "../../lib/db.js";
 import type { Conversation, Message, User } from "@prisma/client";
 import type { CoreMessage } from "ai";
 

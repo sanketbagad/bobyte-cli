@@ -3,7 +3,7 @@ import path from "path";
 import chalk from "chalk";
 import { generateObject } from "ai";
 import { z } from "zod";
-import type { AIService } from "../cli/ai/google.service";
+import type { AIService } from "../cli/ai/google.service.js";
 
 // Type definitions
 interface FileEntry {

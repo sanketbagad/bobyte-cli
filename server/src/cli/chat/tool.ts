@@ -4,10 +4,10 @@ import { text, isCancel, cancel, intro, outro, multiselect } from "@clack/prompt
 import yoctoSpinner from "yocto-spinner";
 import { marked } from "marked";
 import { markedTerminal } from "marked-terminal";
-import { AIService } from "../ai/google.service";
-import { ChatService } from "../../services/chat.services";
-import { getStoredToken } from "../commands/auth/login";
-import prisma from "../../lib/db";
+import { AIService } from "../ai/google.service.js";
+import { ChatService } from "../../services/chat.services.js";
+import { getStoredToken } from "../commands/auth/login.js";
+import prisma from "../../lib/db.js";
 import { 
   availableTools,
   getEnabledTools, 
@@ -15,7 +15,7 @@ import {
   getEnabledToolNames,
   resetTools,
   type ToolDefinition
-} from "../../config/tool.config";
+} from "../../config/tool.config.js";
 import type { Conversation, Message, User } from "@prisma/client";
 
 // Type definitions

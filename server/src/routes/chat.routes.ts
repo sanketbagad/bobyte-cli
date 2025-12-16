@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
-import { ChatService } from '../services/chat.services';
-import { AIService } from '../cli/ai/google.service';
+import { ChatService } from '../services/chat.services.js';
+import { AIService } from '../cli/ai/google.service.js';
 import type { CoreMessage } from 'ai';
 
 const router = Router();

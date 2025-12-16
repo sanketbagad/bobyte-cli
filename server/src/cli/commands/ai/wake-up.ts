@@ -1,12 +1,12 @@
 import chalk from "chalk";
 import { Command } from "commander";
 import yoctoSpinner from "yocto-spinner";
-import { getStoredToken } from "../auth/login";
-import prisma from "../../../lib/db";
+import { getStoredToken } from "../auth/login.js";
+import prisma from "../../../lib/db.js";
 import { select } from "@clack/prompts";
-import { startChat } from "../../chat/chat-with-ai";
-import { startToolChat } from "../../chat/tool";
-import { startAgentChat } from "../../chat/agent";
+import { startChat } from "../../chat/chat-with-ai.js";
+import { startToolChat } from "../../chat/tool.js";
+import { startAgentChat } from "../../chat/agent.js";
 
 const wakeUpAction = async () => {
   const token = await getStoredToken();
