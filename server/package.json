@@ -17,7 +17,8 @@
   },
   "scripts": {
     "dev": "nodemon --exec ts-node src/index.ts",
-    "build": "npx prisma generate && tsc",
+    "build": "tsc",
+    "postinstall": "prisma generate",
     "start": "node dist/index.js",
     "cli": "tsx src/cli/main.ts",
     "cli:dev": "nodemon --exec tsx src/cli/main.ts",
