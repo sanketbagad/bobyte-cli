@@ -18,7 +18,7 @@ const allowedOrigins: (string | RegExp)[] = [
 ];
 
 app.use(cors({
-    origin: allowedOrigins as any,
+    origin: allowedOrigins,
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
 }));
@@ -27,7 +27,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Auth middleware - dynamically import better-auth to handle ESM
-app.all('/api/auth/:path(.*)', async (req, res) => {
+app.use('/api/auth', async (req, res) => {
     try {
         const { toNodeHandler } = await import("better-auth/node");
         const { auth } = await import('./lib/auth.js');
