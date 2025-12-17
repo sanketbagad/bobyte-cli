@@ -19,10 +19,10 @@ export function LoginForm({ callbackURL = "http://localhost:3000" }: LoginFormPr
     setError(null);
     
     try {
-      // Construct the full callback URL - use window.location.origin for production
-      const baseUrl = typeof window !== "undefined" ? window.location.origin : "http://localhost:3000";
+      // Always redirect to client URL, not server URL
+      const clientBaseUrl = process.env.NEXT_PUBLIC_CLIENT_URL || (typeof window !== "undefined" ? window.location.origin : "http://localhost:3000");
       const fullCallbackURL = callbackURL.startsWith("/") 
-        ? `${baseUrl}${callbackURL}` 
+        ? `${clientBaseUrl}${callbackURL}` 
         : callbackURL;
         
       const result = await authClient.signIn.social({
