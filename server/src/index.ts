@@ -64,7 +64,7 @@ app.get('/health', (req: Request, res: Response) => {
 });
 
 // Device authorization validation endpoint
-app.get("/api/device", async (req, res) => {
+app.get("/device", async (req, res) => {
   try {
     const { user_code } = req.query;
     

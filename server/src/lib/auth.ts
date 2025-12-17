@@ -20,7 +20,6 @@ export const auth = betterAuth({
         deviceAuthorization({
             expiresIn: "30m",
             interval: "15s",
-            verificationUri: "https://botbyte-cli-client.vercel.app/device",
         }),
     ],
     socialProviders: {
