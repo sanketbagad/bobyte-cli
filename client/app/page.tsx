@@ -3,12 +3,19 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { authClient } from "@/lib/auth-client"
 import { useRouter } from "next/navigation"
+import { useEffect } from "react"
 import { Terminal, LogOut, Mail, User, CheckCircle2, Loader2, Sparkles, Command, MessageSquare } from "lucide-react"
 import Image from "next/image"
 
 export default function Home() {
   const { data, isPending } = authClient.useSession()
   const router = useRouter()
+
+  useEffect(() => {
+    if (!isPending && !data?.session && !data?.user) {
+      router.push("/sign-in")
+    }
+  }, [isPending, data?.session, data?.user, router])
 
   if (isPending) {
     return (
@@ -27,7 +34,13 @@ export default function Home() {
   }
 
   if (!data?.session && !data?.user) {
-    router.push("/sign-in")
+    return (
+      <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950">
+        <div className="flex flex-col items-center gap-4">
+          <Loader2 className="w-6 h-6 text-indigo-400 animate-spin" />
+        </div>
+      </div>
+    )
   }
 
   return (
